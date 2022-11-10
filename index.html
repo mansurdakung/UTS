@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Peta Nusa Tenggara Barat</title>
+
+    <!-- load css leaflet -->
+    <link rel="stylesheet" href="src/leaflet.css">
+    <!-- load js leaflet -->
+    <script src="src/leaflet.js"></script>
+    <script src="geojson/lombok.js" type="text/javascript"></script>
+    <style>
+        body,html{
+            padding: 0px;
+            margin: 0px;
+            height: 100%;
+        }
+        #ntbmap{
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="ntbmap"></div>
+
+
+    <script>
+    var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' + 
+                 ' &copy; <a href="https://www.jihadul4kbar.github.io/">Jihadul Akbar</a>',
+        mbUrl = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+
+    var streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr}),
+        grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr});
+        traffic = L.tileLayer(mbUrl, {id:'mapbox.mapbox-terrain-v2', attribution:mbAttr});
+        jalanv8 = L.tileLayer(mbUrl, {id:'mapbox.mapbox-streets-v8', attribution:mbAttr});
+        satellite = L.tileLayer(mbUrl, {id:'mapbox.satellite', attribution:mbAttr});
+
+// mapbox.streets
+// mapbox.light
+// mapbox.dark
+// mapbox.satellite
+// mapbox.streets-satellite
+// mapbox.wheatpaste
+// mapbox.streets-basic
+// mapbox.comic
+// mapbox.outdoors
+// mapbox.run-bike-hike
+// mapbox.pencil
+// mapbox.pirates
+// mapbox.emerald
+// mapbox.high-contrast
+
+    var map = L.map('ntbmap', {
+        center: [-8.6873968, 116.2817962],
+        zoom: 14,
+        layers: [ streets]
+    });
+var mapIcon = L.Icon.extend({
+        options: {
+            iconSize:     [33, 38],
+            iconAnchor:   [22, 94],
+            popupAnchor:  [-5, -90] 
+        }
+        });
+    var masjidIcon = new mapIcon({iconUrl: 'icon/mosquee.png'}),
+        pasarIcon = new mapIcon({iconUrl: 'icon/market.png'}),
+        sekolahIcon = new mapIcon({iconUrl: 'icon/school.png'});
+        kantorcamatIcon = new mapIcon({iconUrl: 'icon/embassy.png'});
+        bendunganIcon = new mapIcon({iconUrl: 'icon/beach_icon.png'});
+        RUSDIcon = new mapIcon({iconUrl: 'icon/hospital-building.png'});
+        kantorIcon = new mapIcon({iconUrl: 'icon/home-2.png'});
+        kantorgupatiIcon = new mapIcon({iconUrl: 'icon/homecenter.png'});
+        polresIcon = new mapIcon({iconUrl: 'icon/resort.png'});
+        rumahsakitIcon = new mapIcon({iconUrl: 'icon/office-building.png'});
+        abcIcon = new mapIcon({iconUrl: 'icon/hiking2.png'});
+        tamanIcon = new mapIcon({iconUrl: 'icon/garden.png'});
+        musikIcon = new mapIcon({iconUrl: 'icon/music.png'});
+
+
+    L.marker([-8.6128812,116.3103311],{icon: kantorcamatIcon}).addTo(map)
+    .bindPopup('Kantor camat batukliang.<br> Lombok Tengah.');
+
+    L.marker([-8.6942821,116.3995881],{icon:kantorcamatIcon}).addTo(map)
+    .bindPopup('kantor camat janafria');
+
+    L.marker([-8.588949,116.3245473],{icon:kantorcamatIcon}).addTo(map)
+    .bindPopup('kantor camat batukliang utara');
+
+    L.marker([-8.6525193,116.1979991],{icon: kantorcamatIcon}).addTo(map)
+    .bindPopup('kantor camat jonggat .<br> Lombok Tengah.');
+
+     L.marker([-8.6343426,116.3548378],{icon: kantorcamatIcon}).addTo(map)
+    .bindPopup('kantor camat kopang .<br> Lombok Tengah.');
+
+     L.marker([-8.7237617,116.2390471],{icon: kantorcamatIcon}).addTo(map)
+    .bindPopup('kantor camat praya .<br> Lombok Tengah.');
+
+     L.marker([-8.742301,116.2410837],{icon: kantorcamatIcon}).addTo(map)
+    .bindPopup('kantor camat praya barat .<br> Lombok Tengah.');
+
+     L.marker([-8.7385415,116.2015728],{icon: kantorcamatIcon}).addTo(map)
+    .bindPopup('kantor camat praya barat daya .<br> Lombok Tengah.');
+
+     L.marker([-8.7340447,116.316331],{icon: kantorcamatIcon}).addTo(map)
+    .bindPopup('kantor camat praya tengah .<br> Lombok Tengah.');
+
+     L.marker([-8.7614541,116.3561055],{icon: kantorcamatIcon}).addTo(map)
+    .bindPopup('kantor camat praya timur .<br> Lombok Tengah.');
+
+     L.marker([-8.6190565,116.2517066],{icon: kantorcamatIcon}).addTo(map)
+    .bindPopup('kantor camat pringgarata .<br> Lombok Tengah.');
+
+     L.marker([-8.8004563,116.292598],{icon: kantorcamatIcon}).addTo(map)
+    .bindPopup('kantor camat pujut .<br> Lombok Tengah.');
+
+     L.marker([-8.7019832,116.2958626],{icon:RUSDIcon}).addTo(map)
+    .bindPopup('RUSD praya');
+
+     L.marker([-8.7060444,116.2726082],{icon:rumahsakitIcon}).addTo(map)
+    .bindPopup('puskesmas praya');
+
+     L.marker([-8.7045539,116.2712998],{icon:abcIcon}).addTo(map)
+    .bindPopup('alun alun tastura');
+
+     L.marker([-8.7139106,116.2869397],{icon:tamanIcon}).addTo(map)
+    .bindPopup('taman biao');
+
+     L.marker([-8.7141343,116.2639882],{icon:musikIcon}).addTo(map)
+    .bindPopup('tonjeng beru semart garden');
+
+     L.marker([-8.7061917,116.2691035],{icon:kantorgupatiIcon}).addTo(map)
+    .bindPopup('kantor gupati lombok tengah');
+
+     L.marker([-8.7093713,116.2793799],{icon:polresIcon}).addTo(map)
+    .bindPopup('polres lombok tengah');
+
+     L.marker([-8.7320897,116.2726254],{icon:bendunganIcon}).addTo(map)
+    .bindPopup('bendungan batu jai');
+
+     L.marker([-8.7575494,116.1880415],{icon:bendunganIcon}).addTo(map)
+    .bindPopup('bendungan pengge');
+
+    var mj1 = L.marker([-8.7111808,116.2779302],{icon: masjidIcon}).addTo(map).bindPopup('Masjid Jamiq .<br> Lombok Tengah.');
+    var mj2 = L.marker([-8.701644,116.2657422],{icon: masjidIcon}).addTo(map).bindPopup('Masjid Agung.<br> Lombok Tengah.');
+    
+    var masjid = L.layerGroup([mj1, mj2]);
+    var baseLayers = {
+        "Jalan": streets,
+        "Hitam Putih": grayscale,
+        "Trapik": traffic,
+        "Jalanv8": jalanv8,
+        "Satellite": satellite,
+        
+    };
+    var overlays = {
+        "Masjid": masjid
+    };
+
+    L.control.layers(baseLayers).addTo(map);
+
+    
+
+    L.geoJSON([ kabupaten ], {
+		style: function (feature) {
+			return feature.properties && feature.properties.style;
+		}
+	}).addTo(map);
+    </script>
+</body>
+</html>
